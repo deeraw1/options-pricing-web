@@ -76,13 +76,13 @@ function BSPanel() {
       <div className="card">
         <div className="section-title">Inputs</div>
         <Row label="Spot S">
-          <input className="input" type="number" value={S} onChange={e => setS(+e.target.value)} step="any" />
+          <input className="input" type="number" min={0.01} value={S} onChange={e => setS(Math.max(0.01, +e.target.value))} step="any" />
         </Row>
         <Row label="Strike K">
-          <input className="input" type="number" value={K} onChange={e => setK(+e.target.value)} step="any" />
+          <input className="input" type="number" min={0.01} value={K} onChange={e => setK(Math.max(0.01, +e.target.value))} step="any" />
         </Row>
         <Row label="Time T (years)">
-          <input className="input" type="number" value={T} onChange={e => setT(+e.target.value)} step="0.01" />
+          <input className="input" type="number" min={0.001} value={T} onChange={e => setT(Math.max(0.001, +e.target.value))} step="0.01" />
         </Row>
         <Row label="Risk-free r">
           <input className="input" type="number" value={r} onChange={e => setR(+e.target.value)} step="0.001" />
@@ -91,7 +91,7 @@ function BSPanel() {
           <input className="input" type="number" value={q} onChange={e => setQ(+e.target.value)} step="0.001" />
         </Row>
         <Row label="Volatility σ">
-          <input className="input" type="number" value={sigma} onChange={e => setSigma(+e.target.value)} step="0.01" />
+          <input className="input" type="number" min={0.001} value={sigma} onChange={e => setSigma(Math.max(0.001, +e.target.value))} step="0.01" />
         </Row>
         <Row label="Type">
           <select className="select" value={option} onChange={e => setOption(e.target.value as any)}>
